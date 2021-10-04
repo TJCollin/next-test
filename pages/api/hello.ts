@@ -1,13 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from "next";
+import dbConnect from "../../middlewares/mongo";
+import UserModel from "../../models/user";
 
-type Data = {
-  name: string
-}
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  const users = await UserModel.find({}).limit(10);
+  res.status(200).json({ data: users });
+};
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
-}
+export default dbConnect(handler);
