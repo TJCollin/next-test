@@ -1,4 +1,4 @@
-import mongoose, { Schema, model } from "mongoose";
+import mongoose, { Schema, model, Model } from "mongoose";
 import { User } from "../types";
 
 const userSchema = new Schema<User>({
@@ -26,4 +26,4 @@ const userSchema = new Schema<User>({
   role: { type: Number, default: 1 },
 });
 
-export default mongoose.models.User || model("User", userSchema);
+export default mongoose.models.User as Model<User> || model("User", userSchema);
