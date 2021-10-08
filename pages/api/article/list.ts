@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import wrapper from "../../../middlewares";
 import { Methods, ResType } from "../../../types";
-import { getArticleListByPage } from "../../../controller/article";
+import { getArticleListByPage } from "../../../service/article";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<ResType>) => {
   const { method } = req;

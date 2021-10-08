@@ -5,7 +5,7 @@ import {
   insertProject,
   getProjectListByPage,
   deleteProject,
-} from "../../../controller/project";
+} from "../../../service/project";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<ResType>) => {
   const { method } = req;

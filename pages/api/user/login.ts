@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { findOne } from "../../../controller/user";
+import { findOne } from "../../../service/user";
 import dbConnect from "../../../middlewares/mongo";
 import UserModel from "../../../models/user";
 import { Methods, ResType } from "../../../types";
@@ -19,7 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResType>) => {
         if (user && user.password === password) {
           const token = jwt.sign(
             {
-              name: user.name,
+              name: user.username,
               password: user.password,
               exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7,
             },

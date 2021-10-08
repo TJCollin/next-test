@@ -6,7 +6,7 @@ import {
   getArticleById,
   updateArticle,
   deleteArticle,
-} from "../../../controller/article";
+} from "../../../service/article";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<ResType>) => {
   const { method } = req;

@@ -2,17 +2,24 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import wrapper from "../../../middlewares";
 import { Methods, ResType } from "../../../types";
 import { getTagListByPage, updateTag, deleteTag } from "../../../service/tag";
+import { updateOne } from "../../../service/user";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<ResType>) => {
   const { method } = req;
   switch (method) {
     case Methods.POST:
       try {
-        const { tagName, description } = req.body;
-        const result = await updateTag({ tagName, description });
-        res.send({ code: 0, data: result, message: "标签修改成功" });
+        const { username, password, avatar, slogan, role } = req.body;
+        const result = await updateOne({
+          username,
+          password,
+          avatar,
+          slogan,
+          role,
+        });
+        res.send({ code: 0, data: result, message: "用户操作成功" });
       } catch (e) {
-        res.send({ code: 1, data: null, message: `修改标签失败：${e}` });
+        res.send({ code: 1, data: null, message: `用户操作失败：${e}` });
       }
       break;
     case Methods.GET:

@@ -2,15 +2,13 @@ import { Mongoose, Types } from "mongoose";
 
 export interface User {
   // 名字
-  name: string;
-
-  username?: string;
+  username: string;
 
   // 签名
   slogan?: string;
 
   // 头像
-  gravatar?: string;
+  avatar?: string;
 
   // 密码
   password: string;
