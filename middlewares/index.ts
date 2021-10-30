@@ -4,6 +4,6 @@ import verify from "./jwt";
 import allowCors from "./cors";
 
 const wrapper = (handler: NextApiHandler) =>
-  dbConnect(verify(allowCors(handler)));
+  dbConnect(allowCors(verify(handler)));
 
 export default wrapper;
