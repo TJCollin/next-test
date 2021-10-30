@@ -3,6 +3,7 @@ import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 const allowCors =
   (handler: NextApiHandler) =>
   async (req: NextApiRequest, res: NextApiResponse) => {
+    console.log("get int cors");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     console.log("origin", req.headers.host, req.headers.host || "*");
     res.setHeader("Access-Control-Allow-Origin", req.headers.host || "*");
