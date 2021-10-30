@@ -4,6 +4,7 @@ import dbConnect from "../../../middlewares/mongo";
 import UserModel from "../../../models/user";
 import { Methods, ResType } from "../../../types";
 import jwt from "jsonwebtoken";
+import allowCors from "../../../middlewares/cors";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<ResType>) => {
   const { method } = req;
@@ -36,4 +37,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResType>) => {
   }
 };
 
-export default dbConnect(handler);
+export default dbConnect(allowCors(handler));
