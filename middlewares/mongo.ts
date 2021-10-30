@@ -19,15 +19,16 @@ if (!cached) {
 const dbConnect =
   (handler: NextApiHandler) =>
   async (req: NextApiRequest, res: NextApiResponse) => {
-    console.log(mongoose.connections, mongoose.connections[0].readyState);
     if (mongoose.connections[0].readyState) {
-      console.log("数据库连接成功！");
+      console.log("使用已有数据库连接！");
       return handler(req, res);
     }
     try {
+      console.log("连接数据库成功！");
       await connect(uri);
       return handler(req, res);
     } catch (e) {
+      console.log("e");
       res.send({ code: 1, data: null, message: "数据库连接失败" });
     }
   };
