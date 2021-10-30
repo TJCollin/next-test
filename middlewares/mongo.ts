@@ -19,7 +19,7 @@ if (!cached) {
 const dbConnect =
   (handler: NextApiHandler) =>
   async (req: NextApiRequest, res: NextApiResponse) => {
-    console.log(mongoose.connections);
+    console.log(mongoose.connections, mongoose.connections[0].readyState);
     if (mongoose.connections[0].readyState) {
       console.log("数据库连接成功！");
       return handler(req, res);
