@@ -20,11 +20,15 @@ const dbConnect =
   (handler: NextApiHandler) =>
   async (req: NextApiRequest, res: NextApiResponse) => {
     if (mongoose.connections[0].readyState) {
-      // Use current db connection
+      console.log("数据库连接成功！");
       return handler(req, res);
     }
-    await connect(uri);
-    return handler(req, res);
+    try {
+      await connect(uri);
+      return handler(req, res);
+    } catch (e) {
+      res.send({ code: 1, data: null, message: "数据库连接失败" });
+    }
   };
 
 export default dbConnect;
