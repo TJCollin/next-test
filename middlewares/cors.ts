@@ -6,7 +6,7 @@ const allowCors =
     console.log("get int cors");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     console.log("origin", req.headers.host, req.headers.host || "*");
-    res.setHeader("Access-Control-Allow-Origin", "/(localhost).");
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
       "Access-Control-Allow-Methods",
       "GET,OPTIONS,PATCH,DELETE,POST,PUT"
