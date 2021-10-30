@@ -26,6 +26,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log("before cors");
   // Run cors
   await cors(req, res);
 
