@@ -24,7 +24,7 @@ const allowCors =
     );
 
     if (req.method === "OPTIONS") {
-      res.status(200).end();
+      res.status(200).send(null);
       return;
     }
     return await handler(req, res);
