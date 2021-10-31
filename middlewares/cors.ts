@@ -4,9 +4,11 @@ const allowCors =
   (handler: NextApiHandler) =>
   async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader("Access-Control-Allow-Credentials", "true");
+
     console.log(
       "origin",
       req.headers.origin,
+      req.method,
       req.headers.origin?.includes("localhost")
     );
 
