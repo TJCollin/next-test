@@ -10,6 +10,8 @@ const verify =
       throw new Error("请在环境参数中配置 JWT 密钥");
     }
 
+    console.log(req.method, "get int verfiy");
+
     const { authorization } = req.headers;
     if (authorization && authorization.indexOf("Basic ") > -1) {
       const base64Credentials = authorization.split(" ")[1];
