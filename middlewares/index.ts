@@ -5,6 +5,6 @@ import allowCors from "./cors";
 
 const wrapper = (handler: NextApiHandler) => {
   console.log("before cors");
-  return verify(allowCors(dbConnect(handler)));
+  return dbConnect(allowCors(verify(handler)));
 };
 export default wrapper;
