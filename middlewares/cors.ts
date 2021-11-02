@@ -24,10 +24,10 @@ const allowCors =
     );
 
     if (req.method === "OPTIONS") {
-      res.send(null);
-      return;
+      res.status(200).end();
+    } else {
+      return await handler(req, res);
     }
-    return await handler(req, res);
   };
 
 export default allowCors;
