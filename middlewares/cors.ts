@@ -22,10 +22,8 @@ const allowCors =
       "Access-Control-Allow-Headers",
       "Origin, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
     );
-    console.log(req.method, req.method === "OPTIONS");
     if (req.method === "OPTIONS") {
-      console.log("options");
-      res.status(200).send({});
+      res.status(200).end();
     } else {
       return await handler(req, res);
     }
