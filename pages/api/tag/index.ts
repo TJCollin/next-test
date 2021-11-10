@@ -10,9 +10,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResType>) => {
       try {
         const { tagName, description } = req.body;
         const result = await updateTag({ tagName, description });
-        res.send({ code: 0, data: result, message: "标签修改成功" });
+        res.send({ code: 0, data: result, message: "新增修改成功" });
       } catch (e) {
-        res.send({ code: 1, data: null, message: `修改标签失败：${e}` });
+        res.send({ code: 1, data: null, message: `新增标签失败：${e}` });
       }
       break;
     case Methods.GET:
@@ -37,6 +37,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResType>) => {
         res.send({ code: 1, data: null, message: `删除标签失败：${e}` });
       }
       break;
+    case Methods.DELETE:
   }
 };
 

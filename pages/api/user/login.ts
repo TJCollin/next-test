@@ -26,7 +26,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResType>) => {
             },
             secret
           );
-          res.send({ code: 0, data: { token, user }, message: "登录成功" });
+          res.send({
+            code: 0,
+            data: {
+              token,
+              user,
+              lifeTime: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7,
+            },
+            message: "登录成功",
+          });
         } else {
           res.send({ code: 1, data: null, message: "密码错误" });
         }
