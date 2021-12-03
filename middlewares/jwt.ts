@@ -12,6 +12,10 @@ const verify =
 
     console.log(req.method, "get in verfiy");
 
+    if (req.method === "GET") {
+      return handler(req, res);
+    }
+
     const { authorization } = req.headers;
     if (authorization && authorization.indexOf("Basic ") > -1) {
       const base64Credentials = authorization.split(" ")[1];
